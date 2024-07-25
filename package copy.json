@@ -7,7 +7,7 @@
     "build": "next build",
     "build-swa": "next build && rm -rf ./.next/cache",
     "start": "next start",
-    "lint": "eslint components/** --fix",
+    "lint": "eslint components/**  --fix",
     "format": "prettier --check components/**",
     "format:fix": "prettier --write components/** lib/** app/**"
   },

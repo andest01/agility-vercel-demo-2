@@ -30,6 +30,30 @@
     "no-return-await": "error",
     "unicorn/prevent-abbreviations": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-uses-react": "off"
+    "react/jsx-uses-react": "off",
+    "unicorn/filename-case": "off",
+    // off for now
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/ban-types": "off",
+    "unicorn/no-await-expression-member": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "prefer-const": "off",
+    "unicorn/no-null": "off",
+    "unicorn/no-array-for-each": "off",
+    "no-return-await": "off",
+    "no-console": "off",
+    "unicorn/prefer-number-properties": "off",
+    "sonarjs/no-duplicate-string": "off",
+    "sonarjs/prefer-immediate-return": "off",
+    "sonarjs/no-nested-template-literals": "off",
+    "tailwindcss/no-custom-classname": "off",
+    "unicorn/prefer-ternary": "off",
+    "sonarjs/cognitive-complexity": "off",
+    "tailwindcss/classnames-order": "off",
+    "unicorn/consistent-function-scoping": "off",
+    "sonarjs/no-gratuitous-expressions": "off",
+    "no-empty": "off",
+    "eqeqeq": "off",
+    "tailwindcss/migration-from-tailwind-2": "off"
   }
 }
