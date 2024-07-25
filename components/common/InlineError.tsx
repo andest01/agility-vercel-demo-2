@@ -1,11 +1,11 @@
-import {ContentItem} from "@agility/content-fetch"
-import OutputContentItem from "./output-content-item/OutputContentItem"
+import { ContentItem } from "@agility/content-fetch";
+import OutputContentItem from "./output-content-item/OutputContentItem";
 
 interface Props {
-	/**
-	 * The error message to display
-	 */
-	message: string
+  /**
+   * The error message to display
+   */
+  message: string;
 }
 
 /**
@@ -13,12 +13,12 @@ interface Props {
  * @param {Props} props
  * @returns
  */
-export default function InlineError({message}: Props) {
-	return (
-		<section className="relative my-6">
-			<div className="max-w-2xl mx-auto px-8 py-6 bg-gray-100 rounded-md border border-gray-300">
-				<div className="text-base font-medium">{message}</div>
-			</div>
-		</section>
-	)
+export default function InlineError({ message }: Props) {
+  return (
+    <section className="relative my-6">
+      <div className="mx-auto max-w-2xl rounded-md border border-gray-300 bg-gray-100 px-8 py-6">
+        <div className="text-base font-medium">{message}</div>
+      </div>
+    </section>
+  );
 }
