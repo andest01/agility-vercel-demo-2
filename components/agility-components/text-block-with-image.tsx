@@ -1,15 +1,11 @@
 import React from "react";
 import {
   AgilityPic,
-  ContentItem,
   ImageField,
-  Module,
   URLField,
-  UnloadedModule,
   UnloadedModuleProps,
 } from "@agility/nextjs";
 import Link from "next/link";
-import getAgilitySDK from "lib/cms/getAgilitySDK";
 import { getContentItem } from "lib/cms/getContentItem";
 
 interface ITextBlockWithImage {
@@ -145,7 +141,7 @@ const TextBlockWithImage = async ({
               generateLink(
                 fields.primaryButton.href,
                 fields.primaryButton.target,
-                fields.primaryButton.text,
+                fields.primaryButton.text
               )}
           </div>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 import { ContentItem } from "@agility/content-fetch";
-import OutputField from "./OutputField";
-import RawContentItem from "./RawContentItem";
+import OutputField from "./output-field";
+import RawContentItem from "./raw-content-item";
 
 interface Props {
   contentItem: ContentItem;

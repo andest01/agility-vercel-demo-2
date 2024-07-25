@@ -1,6 +1,6 @@
 import { Module, UnloadedModuleProps } from "@agility/nextjs";
-import InlineError from "components/common/InlineError";
-import OutputContentItem from "components/common/output-content-item/OutputContentItem";
+import InlineError from "components/common/inline-error";
+import OutputContentItem from "components/common/output-content-item/output-content-item";
 import { getContentItem } from "lib/cms/getContentItem";
 
 const NoComponentFound = async ({

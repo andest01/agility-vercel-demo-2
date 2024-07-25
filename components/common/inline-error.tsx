@@ -1,6 +1,3 @@
-import { ContentItem } from "@agility/content-fetch";
-import OutputContentItem from "./output-content-item/OutputContentItem";
-
 interface Props {
   /**
    * The error message to display

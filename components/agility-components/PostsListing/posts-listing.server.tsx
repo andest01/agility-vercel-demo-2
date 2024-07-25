@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { IPostMin, getPostListing } from "lib/cms-content/getPostListing";
 import { useAgilityContext } from "lib/cms/useAgilityContext";
-import PostListingClient from "./PostsListing.client";
+import PostListingClient from "./posts-listing.client";
 import { getContentItem } from "lib/cms/getContentItem";
 import { UnloadedModuleProps } from "@agility/nextjs";
 import { DateTime } from "luxon";

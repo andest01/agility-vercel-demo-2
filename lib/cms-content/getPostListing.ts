@@ -1,25 +1,24 @@
-import { DateTime } from "luxon"
-import getAgilitySDK from "../cms/getAgilitySDK"
-import { ContentList } from "@agility/content-fetch"
-import { ImageField } from "@agility/nextjs"
-import { getContentList } from "lib/cms/getContentList"
-import { getSitemapFlat } from "lib/cms/getSitemapFlat"
+import { DateTime } from "luxon";
+import getAgilitySDK from "../cms/getAgilitySDK";
+import { ContentList } from "@agility/content-fetch";
+import { ImageField } from "@agility/nextjs";
+import { getContentList } from "lib/cms/getContentList";
+import { getSitemapFlat } from "lib/cms/getSitemapFlat";
 
 export interface IPostMin {
-
-	contentID: number
-	title: string
-	date: string
-	url: string
-	category: string
-	image: ImageField
+  contentID: number;
+  title: string;
+  date: string;
+  url: string;
+  category: string;
+  image: ImageField;
 }
 
 interface LoadPostsProp {
-	sitemap: string
-	locale: string
-	skip: number
-	take: number
+  sitemap: string;
+  locale: string;
+  skip: number;
+  take: number;
 }
 
 /**
@@ -27,70 +26,75 @@ interface LoadPostsProp {
  * @param param0
  * @returns
  */
-export const getPostListing = async ({ sitemap, locale, skip, take }: LoadPostsProp) => {
+export const getPostListing = async ({
+  sitemap,
+  locale,
+  skip,
+  take,
+}: LoadPostsProp) => {
+  try {
+    // get sitemap...
+    const sitemapNodes = await getSitemapFlat({
+      channelName: sitemap,
+      languageCode: locale,
+    });
 
+    // get posts...
+    const rawPosts: ContentList = await getContentList({
+      referenceName: "posts",
+      languageCode: locale,
+      contentLinkDepth: 2,
+      take,
+      skip,
+    });
 
-	try {
-		// get sitemap...
-		let sitemapNodes = await getSitemapFlat({
-			channelName: sitemap,
-			languageCode: locale,
-		})
+    // resolve dynamic urls
+    const dynamicUrls = resolvePostUrls(sitemapNodes, rawPosts.items);
 
-		// get posts...
-		let rawPosts: ContentList = await getContentList({
-			referenceName: "posts",
-			languageCode: locale,
-			contentLinkDepth: 2,
-			take,
-			skip
-		})
+    const posts: IPostMin[] = rawPosts.items.map((post: any) => {
+      //category
+      const category = post.fields.category?.fields.title || "Uncategorized";
 
-		// resolve dynamic urls
-		const dynamicUrls = resolvePostUrls(sitemapNodes, rawPosts.items)
+      // date
+      const date = DateTime.fromJSDate(new Date(post.fields.date)).toFormat(
+        "LLL. dd, yyyy",
+      );
 
-		const posts: IPostMin[] = rawPosts.items.map((post: any) => {
-			//category
-			const category = post.fields.category?.fields.title || "Uncategorized"
+      // url
+      const url = dynamicUrls[post.contentID] || "#";
 
-			// date
-			const date = DateTime.fromJSDate(new Date(post.fields.date)).toFormat("LLL. dd, yyyy")
+      // post image src
+      const imageSrc = post.fields.image.url;
 
-			// url
-			const url = dynamicUrls[post.contentID] || "#"
+      // post image alt
+      const imageAlt = post.fields.image?.label || null;
 
-			// post image src
-			let imageSrc = post.fields.image.url
+      return {
+        contentID: post.contentID,
+        title: post.fields.title,
+        date,
+        url,
+        category,
+        image: post.fields.image,
+      };
+    });
 
-			// post image alt
-			let imageAlt = post.fields.image?.label || null
-
-			return {
-				contentID: post.contentID,
-				title: post.fields.title,
-				date,
-				url,
-				category,
-				image: post.fields.image
-			}
-		})
-
-		return {
-			posts,
-		}
-	} catch (error) {
-		throw new Error(`Error loading data for PostListing: ${error}`)
-	}
-}
+    return {
+      posts,
+    };
+  } catch (error) {
+    throw new Error(`Error loading data for PostListing: ${error}`);
+  }
+};
 
 const resolvePostUrls = function (sitemap: any, posts: any) {
-	let dynamicUrls: any = {};
-	posts.forEach((post: any) => {
-		Object.keys(sitemap).forEach((path) => {
-			if (sitemap[path].contentID === post.contentID) {
-				dynamicUrls[post.contentID] = path;
-			}
-		});
-	});
-	return dynamicUrls;
+  const dynamicUrls: any = {};
+  posts.forEach((post: any) => {
+    for (const path of Object.keys(sitemap)) {
+      if (sitemap[path].contentID === post.contentID) {
+        dynamicUrls[post.contentID] = path;
+      }
+    }
+  });
+  return dynamicUrls;
 };
