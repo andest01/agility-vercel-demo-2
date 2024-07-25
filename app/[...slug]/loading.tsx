@@ -1,6 +1,6 @@
 "use client";
 
-import LoadingWidget from "components/common/LoadingWidget";
+import LoadingWidget from "src/common/LoadingWidget";
 import { useEffect, useId, useState } from "react";
 
 export default function Loading() {

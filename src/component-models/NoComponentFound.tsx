@@ -1,6 +1,6 @@
 import { Module, UnloadedModuleProps } from "@agility/nextjs";
-import InlineError from "components/common/InlineError";
-import OutputContentItem from "components/common/output-content-item/OutputContentItem";
+import InlineError from "src/common/InlineError";
+import OutputContentItem from "src/common/output-content-item/OutputContentItem";
 import { getContentItem } from "lib/cms/getContentItem";
 
 const NoComponentFound = async ({
@@ -21,7 +21,7 @@ const NoComponentFound = async ({
     //in production mode, just keep on truckin' after throwing a warning in the log
     console.warn(
       "Agility: No Component form for:",
-      contentItem?.properties.definitionName,
+      contentItem?.properties.definitionName
     );
     return null;
   }

@@ -1,4 +1,4 @@
-import { getPageTemplate } from "components/agility-pages";
+import { getPageTemplate } from "src/page-models";
 import { PageProps, getAgilityPage } from "lib/cms/getAgilityPage";
 import { getAgilityContext } from "lib/cms/useAgilityContext";
 
@@ -6,7 +6,7 @@ import { Metadata, ResolvingMetadata } from "next";
 
 import { resolveAgilityMetaData } from "lib/cms-content/resolveAgilityMetaData";
 import NotFound from "./not-found";
-import InlineError from "components/common/InlineError";
+import InlineError from "src/common/InlineError";
 import { cacheConfig } from "lib/cms/cacheConfig";
 
 export const revalidate = cacheConfig.pathRevalidateDuration;
@@ -18,7 +18,7 @@ export const dynamic = "force-static";
  */
 export async function generateMetadata(
   { params, searchParams }: PageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
   const { locale, sitemap, isDevelopmentMode, isPreview } = getAgilityContext();
@@ -44,7 +44,7 @@ export default async function Page({ params, searchParams }: PageProps) {
   if (!agilityData.page) return NotFound();
 
   const AgilityPageTemplate = getPageTemplate(
-    agilityData.pageTemplateName || "",
+    agilityData.pageTemplateName || ""
   );
 
   return (

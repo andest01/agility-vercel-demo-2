@@ -1,8 +1,8 @@
 import { draftMode } from "next/headers";
-import LoadingWidget from "components/common/LoadingWidget";
-import PreviewBar from "components/common/PreviewBar";
-import SiteFooter from "components/common/SiteFooter";
-import SiteHeader from "components/common/SiteHeader";
+import LoadingWidget from "src/common/LoadingWidget";
+import PreviewBar from "src/common/PreviewBar";
+import SiteFooter from "src/common/SiteFooter";
+import SiteHeader from "src/common/SiteHeader";
 
 import { useAgilityContext } from "lib/cms/useAgilityContext";
 

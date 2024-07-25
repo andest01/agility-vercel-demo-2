@@ -1,18 +1,7 @@
-import React from "react";
-import {
-  AgilityPic,
-  ContentItem,
-  ImageField,
-  Module,
-  URLField,
-  UnloadedModule,
-  UnloadedModuleProps,
-} from "@agility/nextjs";
+import { AgilityPic, ContentItem, ImageField, URLField } from "@agility/nextjs";
 import Link from "next/link";
-import getAgilitySDK from "lib/cms/getAgilitySDK";
-import { getContentItem } from "lib/cms/getContentItem";
 
-interface ITextBlockWithImage {
+export interface ITextBlockWithImage {
   title: string;
   content: string;
   tagline?: string;
@@ -22,55 +11,44 @@ interface ITextBlockWithImage {
   highPriority?: string;
 }
 
-/**
- * Text Block With Image.  This is "unloaded" since we have set the depth property to 0 when fetching the page.
- * @param param0
- * @returns
- */
-const TextBlockWithImage = async ({
-  module,
-  languageCode,
-}: UnloadedModuleProps) => {
-  const { fields, contentID } = await getContentItem<ITextBlockWithImage>({
-    contentID: module.contentid,
-    languageCode,
-  });
+const isUrlAbsolute = (url: string) =>
+  url.indexOf("://") > 0 || url.indexOf("//") === 0;
 
-  // function to check whether or not the url is absolute
-  const isUrlAbsolute = (url: string) =>
-    url.indexOf("://") > 0 || url.indexOf("//") === 0;
+// function to generate proper link
+const generateLink = (url: string, target: string, text: string) => {
+  // if relative link, use next/link
+  if (isUrlAbsolute(url) === false) {
+    return (
+      <Link
+        data-agility-field="primaryButton"
+        href={url}
+        title={text}
+        target={target}
+        className="focus:shadow-outline-indigo mt-8 inline-block rounded-md border border-transparent bg-primary-500 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-primary-700 focus:border-primary-700 focus:outline-none active:bg-indigo-700 md:mt-8"
+      >
+        {text}
+      </Link>
+    );
+  } else {
+    // else use anchor tag
+    return (
+      <a
+        data-agility-field="primaryButton"
+        href={url}
+        title={text}
+        target={target}
+        className="focus:shadow-outline-indigo mt-8 inline-block rounded-md border border-transparent bg-primary-500 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-primary-700 focus:border-primary-700 focus:outline-none active:bg-indigo-700 md:mt-8"
+      >
+        {text}
+      </a>
+    );
+  }
+};
 
-  // function to generate proper link
-  const generateLink = (url: string, target: string, text: string) => {
-    // if relative link, use next/link
-    if (isUrlAbsolute(url) === false) {
-      return (
-        <Link
-          data-agility-field="primaryButton"
-          href={url}
-          title={text}
-          target={target}
-          className="focus:shadow-outline-indigo mt-8 inline-block rounded-md border border-transparent bg-primary-500 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-primary-700 focus:border-primary-700 focus:outline-none active:bg-indigo-700 md:mt-8"
-        >
-          {text}
-        </Link>
-      );
-    } else {
-      // else use anchor tag
-      return (
-        <a
-          data-agility-field="primaryButton"
-          href={url}
-          title={text}
-          target={target}
-          className="focus:shadow-outline-indigo mt-8 inline-block rounded-md border border-transparent bg-primary-500 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-primary-700 focus:border-primary-700 focus:outline-none active:bg-indigo-700 md:mt-8"
-        >
-          {text}
-        </a>
-      );
-    }
-  };
-
+export const TextBlockWithImageComponent = (
+  content: ContentItem<ITextBlockWithImage>
+) => {
+  const { fields, contentID } = content;
   //determine if the image should be high priority
   const priority = fields.highPriority === "true";
 
@@ -145,7 +123,7 @@ const TextBlockWithImage = async ({
               generateLink(
                 fields.primaryButton.href,
                 fields.primaryButton.target,
-                fields.primaryButton.text,
+                fields.primaryButton.text
               )}
           </div>
         </div>
@@ -153,5 +131,3 @@ const TextBlockWithImage = async ({
     </div>
   );
 };
-
-export default TextBlockWithImage;
