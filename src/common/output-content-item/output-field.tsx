@@ -1,5 +1,5 @@
 import { AgilityPic, renderHTML } from "@agility/nextjs";
-import OutputNestedContentItem from "./OutputNestedContentItem";
+import OutputNestedContentItem from "./output-nested-content-item";
 import { useEffect, useMemo, useState } from "react";
 import { FaCaretDown } from "react-icons/fa6";
 import { default as cn } from "classnames";

@@ -1,10 +1,10 @@
-import RichTextArea from "./RichTextArea";
-import FeaturedPost from "./FeaturedPost";
-import PostsListing from "./PostsListing/PostsListing.server";
-import PostDetails from "./PostDetails";
-import Heading from "./Heading";
+import RichTextArea from "./rich-text-area";
+import FeaturedPost from "./featured-post";
+import PostsListing from "./PostsListing/posts-listing.server";
+import PostDetails from "./post-details";
+import Heading from "./heading-text";
 import TextBlockWithImage from "./text-block-with-image/text-block-with-image.agility-component";
-import BigJonnyMan from "./BigJonnyMan";
+import BigJonnyMan from "./big-jonny-man";
 import { UnloadedModuleProps } from "@agility/nextjs";
 
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.

@@ -14,8 +14,6 @@ import { getContentItem } from "lib/cms/getContentItem";
 interface IBigJonnyMan {}
 
 const BigJonnyMan = async ({ module, languageCode }: UnloadedModuleProps) => {
-  console.log("big jonny here we go!");
-  console.log({ module, languageCode });
   return (
     <div className="relative mb-8 px-8">
       <p>Tony Is The Best Tony On Earth, in my humble opinion.</p>

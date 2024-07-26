@@ -6,7 +6,7 @@ import { Metadata, ResolvingMetadata } from "next";
 
 import { resolveAgilityMetaData } from "lib/cms-content/resolveAgilityMetaData";
 import NotFound from "./not-found";
-import InlineError from "src/common/InlineError";
+import InlineError from "src/common/inline-error";
 import { cacheConfig } from "lib/cms/cacheConfig";
 
 export const revalidate = cacheConfig.pathRevalidateDuration;

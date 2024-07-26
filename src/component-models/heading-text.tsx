@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Module, UnloadedModuleProps } from "@agility/nextjs";
 import { getContentItem } from "lib/cms/getContentItem";
 

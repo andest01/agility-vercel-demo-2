@@ -7,9 +7,9 @@
     "build": "next build",
     "build-swa": "next build && rm -rf ./.next/cache",
     "start": "next start",
-    "lint": "eslint src/** --fix",
-    "format": "prettier --check src/**",
-    "format:fix": "prettier --write src/** lib/** app/**",
+    "lint": "eslint src/**/*.{ts,tsx} app/**",
+    "format": "prettier --check src/**/*.{ts,tsx}  lib/**/*.{ts,tsx}  app/**/*.{ts,tsx}  ",
+    "format:fix": "prettier --write src/**/*.{ts,tsx}  lib/**/*.{ts,tsx}  app/**/*.{ts,tsx} ",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

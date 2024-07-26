@@ -27,24 +27,14 @@ export const Basic: Story = {
       "fields" | "contentID"
     > = {
       contentID: 106,
-      properties: {
-        state: 2,
-        modified: "2023-10-14T14:52:45.257",
-        versionID: 1053,
-        referenceName: "home_textblockwithimage",
-        definitionName: "TextBlockWithImage",
-        itemOrder: 0,
-      },
       fields: {
         title: "From short breaks to long adventures",
         tagline: "Wander The World",
         image: {
           label: "Overhead photo of an Island",
           url: "https://cdn.aglty.io/tut24bkf/posts/gaddafi-rusli-2ueUnL4CkV8-unsplash 1.jpg",
-          target: null,
-          filesize: 167559,
-          pixelHeight: "1000",
-          pixelWidth: "1000",
+          target: "",
+          filesize: 167_559,
           height: 1000,
           width: 1000,
         },
@@ -57,6 +47,7 @@ export const Basic: Story = {
         content:
           "Travel blog featuring travel tips, guides, and photography from around the world. Whether you need guidance for your first trip, or you're a seasoned traveler looking for destination inspiration, you've come to the right place!",
         highPriority: "true",
+        tESTdemoUpDownRichTextHello_123: "",
       },
     };
     return <TextBlockWithImageComponent {...props} />;

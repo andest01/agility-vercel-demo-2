@@ -18,8 +18,6 @@ interface IFeaturedPostModule {
 }
 
 const FeaturedPost = async ({ module, languageCode }: UnloadedModuleProps) => {
-  console.log("yoooo");
-  console.log(module);
   const { fields, contentID } = await getContentItem<IFeaturedPostModule>({
     contentID: module.contentid,
     languageCode,

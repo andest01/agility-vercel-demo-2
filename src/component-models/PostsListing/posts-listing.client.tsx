@@ -6,7 +6,7 @@ import Image from "next/image";
 import { IPostMin } from "lib/cms-content/getPostListing";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { AgilityPic } from "@agility/nextjs";
-import { GetNextPostsProps } from "./PostsListing.server";
+import { GetNextPostsProps } from "./posts-listing.server";
 
 interface Props {
   posts: IPostMin[];
