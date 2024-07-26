@@ -18,7 +18,7 @@ export const dynamic = "force-static";
  */
 export async function generateMetadata(
   { params, searchParams }: PageProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // read route params
   const { locale, sitemap, isDevelopmentMode, isPreview } = getAgilityContext();
@@ -44,7 +44,7 @@ export default async function Page({ params, searchParams }: PageProps) {
   if (!agilityData.page) return NotFound();
 
   const AgilityPageTemplate = getPageTemplate(
-    agilityData.pageTemplateName || ""
+    agilityData.pageTemplateName || "",
   );
 
   return (

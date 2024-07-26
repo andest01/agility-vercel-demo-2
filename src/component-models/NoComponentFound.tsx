@@ -21,7 +21,7 @@ const NoComponentFound = async ({
     //in production mode, just keep on truckin' after throwing a warning in the log
     console.warn(
       "Agility: No Component form for:",
-      contentItem?.properties.definitionName
+      contentItem?.properties.definitionName,
     );
     return null;
   }

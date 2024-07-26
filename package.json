@@ -7,9 +7,9 @@
     "build": "next build",
     "build-swa": "next build && rm -rf ./.next/cache",
     "start": "next start",
-    "lint": "eslint components/** --fix",
-    "format": "prettier --check components/**",
-    "format:fix": "prettier --write components/** lib/** app/**",
+    "lint": "eslint src/** --fix",
+    "format": "prettier --check src/**",
+    "format:fix": "prettier --write src/** lib/** app/**",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -63,6 +63,7 @@
     "eslint-plugin-unicorn": "^53.0.0",
     "postcss": "^8.4.19",
     "prettier": "3.3.1",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "storybook": "^8.2.6",
     "tailwindcss": "^3.3.3"
   }

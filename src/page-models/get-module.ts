@@ -4,7 +4,7 @@ import NoComponentFound from "src/component-models/NoComponentFound";
 
 export const getAgilityReactModule = (
   moduleIdLowercase: string,
-  fallbackComponent: IAgilityReactModule = NoComponentFound
+  fallbackComponent: IAgilityReactModule = NoComponentFound,
 ): IAgilityReactModule => {
   return (
     componentModules.get((moduleIdLowercase || "").toLocaleLowerCase()) ??

@@ -22,12 +22,9 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react", "prettier", "unicorn"],
+  "plugins": ["@typescript-eslint", "react", "unicorn", "prettier"],
   "rules": {
     "prettier/prettier": "error",
-    "no-console": "error",
-    "eqeqeq": ["error", "smart"],
-    "no-return-await": "error",
     "unicorn/prevent-abbreviations": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",

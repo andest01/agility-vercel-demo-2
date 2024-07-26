@@ -1,4 +1,10 @@
-import { AgilityPic, ContentItem, ImageField, URLField } from "@agility/nextjs";
+import {
+  AgilityPic,
+  ContentItem,
+  ImageField,
+  renderHTML,
+  URLField,
+} from "@agility/nextjs";
 import Link from "next/link";
 
 export interface ITextBlockWithImage {
@@ -9,6 +15,7 @@ export interface ITextBlockWithImage {
   image: ImageField;
   primaryButton: URLField;
   highPriority?: string;
+  ["tESTdemoUpDownRichTextHello_123"]: string;
 }
 
 const isUrlAbsolute = (url: string) =>
@@ -46,7 +53,7 @@ const generateLink = (url: string, target: string, text: string) => {
 };
 
 export const TextBlockWithImageComponent = (
-  content: Pick<ContentItem<ITextBlockWithImage>, "fields" | "contentID">
+  content: Pick<ContentItem<ITextBlockWithImage>, "fields" | "contentID">,
 ) => {
   console.log(content);
   const { fields, contentID } = content;
@@ -124,11 +131,17 @@ export const TextBlockWithImageComponent = (
               generateLink(
                 fields.primaryButton.href,
                 fields.primaryButton.target,
-                fields.primaryButton.text
+                fields.primaryButton.text,
               )}
           </div>
         </div>
       </div>
+      <h1>weird stuff below</h1>
+      <div
+        dangerouslySetInnerHTML={renderHTML(
+          fields.tESTdemoUpDownRichTextHello_123,
+        )}
+      />
     </div>
   );
 };
