@@ -3,14 +3,14 @@
   "version": "13.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 9009",
     "build": "next build",
     "build-swa": "next build && rm -rf ./.next/cache",
     "start": "next start",
     "lint": "eslint src/**/*.{ts,tsx} app/**",
     "format": "prettier --check src/**/*.{ts,tsx}  lib/**/*.{ts,tsx}  app/**/*.{ts,tsx}  ",
     "format:fix": "prettier --write src/**/*.{ts,tsx}  lib/**/*.{ts,tsx}  app/**/*.{ts,tsx} ",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 8008",
     "build-storybook": "storybook build"
   },
   "engines": {

@@ -1,10 +1,10 @@
 import RichTextArea from "./rich-text-area";
 import FeaturedPost from "./featured-post";
-import PostsListing from "./PostsListing/posts-listing.server";
+import PostsListing from "./posts-listing/posts-listing.server";
 import PostDetails from "./post-details";
 import Heading from "./heading-text";
 import TextBlockWithImage from "./text-block-with-image/text-block-with-image.agility-component";
-import BigJonnyMan from "./big-jonny-man";
+import BigJonnyMan from "./big-jonny-man/big-jonny-man";
 import { UnloadedModuleProps } from "@agility/nextjs";
 
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
@@ -26,7 +26,10 @@ allModules.set("FeaturedPost".toLowerCase(), FeaturedPost);
 allModules.set("PostsListing".toLowerCase(), PostsListing);
 allModules.set("PostDetails".toLowerCase(), PostDetails);
 allModules.set("RichTextArea".toLowerCase(), RichTextArea);
-allModules.set("BigJonnyMan".toLowerCase(), BigJonnyMan);
-allModules.set("TextBlockWithImage".toLowerCase(), TextBlockWithImage);
+allModules.set("big-jonny-man.tsx".toLowerCase(), BigJonnyMan);
+allModules.set(
+  "text-block-with-image.agility-component.tsx".toLowerCase(),
+  TextBlockWithImage,
+);
 
 export default Object.freeze(allModules);

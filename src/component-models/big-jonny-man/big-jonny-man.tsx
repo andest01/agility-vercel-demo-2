@@ -8,7 +8,7 @@ import {
   AgilityImage,
   UnloadedModuleProps,
 } from "@agility/nextjs";
-import { IPost } from "../../lib/types/IPost";
+import { IPost } from "../../../lib/types/IPost";
 import { getContentItem } from "lib/cms/getContentItem";
 
 interface IBigJonnyMan {}

@@ -135,6 +135,9 @@ export const TextBlockWithImageComponent = (
       </div>
       <h1>weird stuff below</h1>
       <div
+        data-agility-field="textblob"
+        data-agility-html
+        className="prose prose-sm my-6 max-w-full sm:prose lg:prose-lg xl:prose-xl"
         dangerouslySetInnerHTML={renderHTML(
           fields.tESTdemoUpDownRichTextHello_123,
         )}

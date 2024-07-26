@@ -6,8 +6,9 @@ export const getAgilityReactModule = (
   moduleIdLowercase: string,
   fallbackComponent: IAgilityReactModule = NoComponentFound,
 ): IAgilityReactModule => {
+  console.log("module: " + moduleIdLowercase);
   return (
-    componentModules.get((moduleIdLowercase || "").toLocaleLowerCase()) ??
+    componentModules.get((moduleIdLowercase || "").toLowerCase()) ??
     fallbackComponent
   );
 };
