@@ -63,10 +63,7 @@ export const TextBlockWithImageComponent = (
   return (
     <div className="relative px-8" data-agility-component={contentID}>
       <div className="mx-auto flex max-w-screen-xl flex-col items-center justify-between py-20 md:flex-row md:py-24">
-        <div
-          className="relative shrink-0 md:w-6/12 "
-          data-agility-field="image"
-        >
+        <div className="relative shrink-0 md:w-6/12" data-agility-field="image">
           {fields.primaryButton ? (
             <Link href={fields.primaryButton.href} className="relative">
               <AgilityPic

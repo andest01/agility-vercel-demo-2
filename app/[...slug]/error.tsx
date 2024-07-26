@@ -26,7 +26,7 @@ export default function Error({
 
   return (
     <section className="relative px-8">
-      <div className="max-w-2xl mx-auto my-12 md:mt-18 lg:mt-20 prose prose-sm lg:prose-lg xl:prose-xl">
+      <div className="md:mt-18 prose prose-sm mx-auto my-12 max-w-2xl lg:prose-lg xl:prose-xl lg:mt-20">
         <h1>{title}</h1>
         <p>{message}</p>
       </div>

@@ -33,7 +33,7 @@ export default function RawContentItem({ contentItem }: Props) {
       >
         <pre
           className={cn(
-            "text-sm  bg-gray-100 rounded p-4 border border-gray-300  transition-transform",
+            "rounded border border-gray-300 bg-gray-100 p-4 text-sm transition-transform",
             jsonExpanded ? "translate-y-0" : "-translate-y-full",
           )}
         >

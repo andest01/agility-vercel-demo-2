@@ -56,7 +56,7 @@ const FeaturedPost = async ({ module, languageCode }: UnloadedModuleProps) => {
             href={`/blog/${featuredPost.fields.slug}`}
             className="cursor-pointer"
           >
-            <div className="relative h-64 w-full sm:h-96 ">
+            <div className="relative h-64 w-full sm:h-96">
               {/* Agility Pic - outputs a <picture> tag */}
               <AgilityPic
                 image={featuredPost.fields.image}

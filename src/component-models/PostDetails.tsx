@@ -23,7 +23,7 @@ const PostDetails = async ({ dynamicPageItem }: UnloadedModuleProps) => {
     <>
       <div className="relative px-8">
         <div className="mx-auto max-w-screen-xl">
-          <div className="relative h-64  overflow-hidden rounded-lg md:h-96 lg:h-[480px]">
+          <div className="relative h-64 overflow-hidden rounded-lg md:h-96 lg:h-[480px]">
             <AgilityPic
               image={post.image}
               alt={post.image.label}

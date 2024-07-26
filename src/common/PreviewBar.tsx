@@ -117,7 +117,7 @@ const PreviewBar = ({
           </div>
         </div>
         <div
-          className={`relative flex items-center ${open ? `bg-white ` : `bg-agility`} py-4`}
+          className={`relative flex items-center ${open ? `bg-white` : `bg-agility`} py-4`}
         >
           {isPreview ? (
             <p

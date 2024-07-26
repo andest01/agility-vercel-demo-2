@@ -87,7 +87,7 @@ const SiteHeader = ({ header }: Props) => {
         <div className="rounded-lg shadow-lg">
           <div className="shadow-xs divide-y-2 divide-gray-50 rounded-lg bg-white">
             <div className="space-y-6 px-5 pb-6 pt-5">
-              <div className="flex items-center justify-between ">
+              <div className="flex items-center justify-between">
                 <div>
                   <Link href="/" className="flex items-center">
                     <AgilityImage
@@ -129,7 +129,7 @@ const SiteHeader = ({ header }: Props) => {
                 </div>
               </div>
               <div>
-                <nav className="grid gap-y-8 ">
+                <nav className="grid gap-y-8">
                   {header.links.map((navitem, index) => {
                     return (
                       <Link

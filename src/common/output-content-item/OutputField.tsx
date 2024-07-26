@@ -81,8 +81,8 @@ export default function OutputField({ fieldName, fieldValue }: Props) {
           <div className="rounded border border-gray-200 bg-white">
             <div
               className={cn(
-                "transition-all overflow-auto",
-                isExpanded ? "max-h-full" : "max-h-32 ",
+                "overflow-auto transition-all",
+                isExpanded ? "max-h-full" : "max-h-32",
               )}
             >
               <AgilityPic
@@ -101,7 +101,7 @@ export default function OutputField({ fieldName, fieldValue }: Props) {
           <div className="overflow-auto rounded border border-gray-200 bg-white">
             <div
               className={cn(
-                "p-2 transition-all overflow-auto",
+                "overflow-auto p-2 transition-all",
                 isExpanded ? "max-h-full" : "max-h-32",
               )}
             >
@@ -131,10 +131,10 @@ export default function OutputField({ fieldName, fieldValue }: Props) {
             {fieldValue}
           </div>
         ) : isJSON ? (
-          <div className=" overflow-auto rounded bg-gray-200">
+          <div className="overflow-auto rounded bg-gray-200">
             <div
               className={cn(
-                " transition-all overflow-auto",
+                "overflow-auto transition-all",
                 isExpanded ? "max-h-full" : "max-h-32",
               )}
             >

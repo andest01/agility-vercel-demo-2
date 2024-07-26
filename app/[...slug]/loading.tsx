@@ -14,7 +14,7 @@ export default function Loading() {
 
   if (!showMessage)
     return (
-      <section className="flex flex-col items-center justify-center h-screen"></section>
+      <section className="flex h-screen flex-col items-center justify-center"></section>
     );
 
   // Or a custom loading skeleton component
