@@ -14,7 +14,7 @@ interface IPostListing {
   preHeader: string;
 }
 
-export interface GetNextPostsProps {
+export interface GetNextPostsProperties {
   skip: number;
   take: number;
 }
@@ -31,31 +31,31 @@ const PostListing = async ({ module, languageCode }: UnloadedModuleProps) => {
   });
 
   // get next posts for infinite scroll
-  const getNextPosts = async ({ skip, take }: GetNextPostsProps) => {
+  const getNextPosts = async ({ skip, take }: GetNextPostsProperties) => {
     "use server";
 
-    const postsRes = await getPostListing({
+    const postsResource = await getPostListing({
       sitemap: sitemap,
       locale,
       skip,
       take,
     });
 
-    if (postsRes.posts.length > 0) {
-      return postsRes.posts;
+    if (postsResource.posts.length > 0) {
+      return postsResource.posts;
     } else {
       //HACK: we are just outputting a lot of posts here for now, so we are creating phantom posts...
       //normally you would use skip and take to do paging on a large list.
       const phantomPosts: IPostMin[] = [];
-      for (let i = skip; i < skip + take; i++) {
+      for (let index = skip; index < skip + take; index++) {
         phantomPosts.push({
-          contentID: i + Number(skip),
+          contentID: index + Number(skip),
           title: "Example infinite scrolling. Keep Scrolling!",
           category: "Inifinite Scroll",
           url: "#",
           date: DateTime.fromJSDate(new Date()).toFormat("LLL. dd, yyyy"),
           image: {
-            url: `https://placehold.co/600x400?text=Example\\nPlaceholder\\nImage%20${i + 1}`,
+            url: `https://placehold.co/600x400?text=Example\\nPlaceholder\\nImage%20${index + 1}`,
             label: "Example Image ",
             width: 800,
             height: 800,

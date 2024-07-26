@@ -4,11 +4,13 @@ import { ContentItem } from "@agility/content-fetch";
 import OutputField from "./output-field";
 import RawContentItem from "./raw-content-item";
 
-interface Props {
+interface OutputContentItemProperties {
   contentItem: ContentItem;
 }
 
-export default function OutputContentItem({ contentItem }: Props) {
+export default function OutputContentItem({
+  contentItem,
+}: OutputContentItemProperties) {
   return (
     <div className="p-6">
       <div className="mx-auto rounded-md border border-red-200 bg-white p-6 shadow-md shadow-red-500">

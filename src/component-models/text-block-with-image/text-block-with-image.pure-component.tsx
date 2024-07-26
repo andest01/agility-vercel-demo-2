@@ -98,7 +98,7 @@ export const TextBlockWithImageComponent = (
         </div>
         <div
           className={`mt-16 md:mt-0 md:w-6/12 ${
-            fields.imagePosition == "right"
+            fields.imagePosition === "right"
               ? `md:order-first md:mr-12 lg:mr-16`
               : `md:order-last md:ml-12 lg:ml-16`
           }`}

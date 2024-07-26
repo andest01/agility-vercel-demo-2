@@ -3,11 +3,13 @@ import { ContentItem } from "@agility/content-fetch";
 import OutputField from "./output-field";
 import RawContentItem from "./raw-content-item";
 
-interface Props {
+interface OutputNestedContentItemProperties {
   contentItem: ContentItem;
 }
 
-export default function OutputNestedContentItem({ contentItem }: Props) {
+export default function OutputNestedContentItem({
+  contentItem,
+}: OutputNestedContentItemProperties) {
   return (
     <div className="mt-2">
       <div className="mx-auto rounded border border-gray-200 bg-gray-50 p-4">

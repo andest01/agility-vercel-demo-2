@@ -5,11 +5,11 @@ import Link from "next/link";
 import { IHeaderData } from "lib/cms-content/getHeaderContent";
 import { AgilityImage } from "@agility/nextjs";
 
-interface Props {
+interface SiteHeaderProperties {
   header: IHeaderData | null;
 }
 
-const SiteHeader = ({ header }: Props) => {
+const SiteHeader = ({ header }: SiteHeaderProperties) => {
   // open / close mobile nav
   const [open, setOpen] = useState(false);
 

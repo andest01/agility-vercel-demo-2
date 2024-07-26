@@ -6,16 +6,21 @@ import Image from "next/image";
 import { IPostMin } from "lib/cms-content/getPostListing";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { AgilityPic } from "@agility/nextjs";
-import { GetNextPostsProps } from "./posts-listing.server";
+import { GetNextPostsProps as GetNextPostsProperties } from "./posts-listing.server";
 
-interface Props {
+interface PostListingClientProperties {
   posts: IPostMin[];
   locale: string;
   sitemap: string;
-  getNextPosts: ({ skip, take }: GetNextPostsProps) => Promise<IPostMin[]>;
+  getNextPosts: ({ skip, take }: GetNextPostsProperties) => Promise<IPostMin[]>;
 }
 
-const PostListingClient = ({ posts, locale, sitemap, getNextPosts }: Props) => {
+const PostListingClient = ({
+  posts,
+  locale,
+  sitemap,
+  getNextPosts,
+}: PostListingClientProperties) => {
   const [hasMore, setHasMore] = useState(true);
   const [items, setItems] = useState(posts);
 
@@ -24,8 +29,8 @@ const PostListingClient = ({ posts, locale, sitemap, getNextPosts }: Props) => {
       //call the server action declared in the server component to get the next page of posts...
       const morePosts = await getNextPosts({ skip: items.length, take: 10 });
 
-      setItems((prev) => {
-        return [...prev, ...morePosts];
+      setItems((previous) => {
+        return [...previous, ...morePosts];
       });
       setHasMore(morePosts.length > 0);
     } catch (error) {

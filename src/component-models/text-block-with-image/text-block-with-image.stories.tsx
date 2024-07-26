@@ -21,8 +21,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  render: (args: any) => {
-    const props: Pick<
+  render: (arguments_: any) => {
+    const properties: Pick<
       ContentItem<ITextBlockWithImage>,
       "fields" | "contentID"
     > = {
@@ -50,7 +50,7 @@ export const Basic: Story = {
         tESTdemoUpDownRichTextHello_123: "",
       },
     };
-    return <TextBlockWithImageComponent {...props} />;
+    return <TextBlockWithImageComponent {...properties} />;
   },
   args: {},
 };

@@ -3,12 +3,12 @@ import { ContentZone } from "@agility/nextjs";
 import { getAgilityReactModule } from "./get-module";
 // import { getModule } from "../component-models";
 
-const MainTemplate = (props: any) => {
+const MainTemplate = (properties: any) => {
   return (
     <div>
       <ContentZone
         name="MainContentZone"
-        {...props}
+        {...properties}
         getModule={getAgilityReactModule}
       />
     </div>

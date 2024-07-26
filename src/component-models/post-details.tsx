@@ -15,7 +15,7 @@ const PostDetails = async ({ dynamicPageItem }: UnloadedModuleProps) => {
   const category = post.category?.fields.title || "Uncategorized";
 
   // format date
-  const dateStr = DateTime.fromJSDate(new Date(post.date)).toFormat(
+  const dateString = DateTime.fromJSDate(new Date(post.date)).toFormat(
     "LLL. dd, yyyy",
   );
 
@@ -42,7 +42,7 @@ const PostDetails = async ({ dynamicPageItem }: UnloadedModuleProps) => {
             </div>
             <div className="w-8 border-b-2 border-primary-500"></div>
             <div className="mt-4 text-xs font-semibold uppercase italic text-gray-600">
-              {dateStr}
+              {dateString}
             </div>
             <h1 className="font-display my-6 text-4xl font-bold text-secondary-500">
               {post.title}

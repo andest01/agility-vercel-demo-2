@@ -13,9 +13,9 @@ interface IRevalidateRequest {
   changeDateUTC: string;
 }
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(request: NextRequest, response: NextResponse) {
   //parse the body
-  const data = (await req.json()) as IRevalidateRequest;
+  const data = (await request.json()) as IRevalidateRequest;
 
   //only process publish events
   if (data.state === "Published") {

@@ -1,7 +1,7 @@
 import { ContentItem } from "@agility/content-fetch";
 import OutputContentItem from "./output-content-item/output-content-item";
 
-interface Props {
+interface InlineErrorPropertiess {
   /**
    * The error message to display
    */
@@ -10,10 +10,10 @@ interface Props {
 
 /**
  * A component to display an error message and optionally expanda a ContentItem object
- * @param {Props} props
+ * @param {InlineErrorPropertiess} props
  * @returns
  */
-export default function InlineError({ message }: Props) {
+export default function InlineError({ message }: InlineErrorPropertiess) {
   return (
     <section className="relative my-6">
       <div className="mx-auto max-w-2xl rounded-md border border-gray-300 bg-gray-100 px-8 py-6">

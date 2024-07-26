@@ -4,24 +4,28 @@ import { useEffect, useMemo, useState } from "react";
 import { FaCaretDown } from "react-icons/fa6";
 import { default as cn } from "classnames";
 
-interface Props {
+interface OutputFieldProperties {
   fieldName: string;
   fieldValue: any;
 }
 
-export default function OutputField({ fieldName, fieldValue }: Props) {
+export default function OutputField({
+  fieldName,
+  fieldValue,
+}: OutputFieldProperties) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isJSON, setIsJSON] = useState(false);
   const [jsonValue, setJsonValue] = useState<string | null>(null);
 
-  const fieldValueStr = `${fieldValue}`;
+  const fieldValueString = `${fieldValue}`;
   const isNestedContentItem = fieldValue?.contentID > 0 && fieldValue?.fields;
   const isString = typeof fieldValue === "string";
-  const isHtml = fieldValueStr.startsWith("<") && fieldValueStr.endsWith(">");
+  const isHtml =
+    fieldValueString.startsWith("<") && fieldValueString.endsWith(">");
   const isImage = !!(fieldValue?.url && fieldValue?.label);
 
   useEffect(() => {
-    let obj = null;
+    let object = null;
     let isit = false;
 
     if (isNestedContentItem) {
@@ -31,28 +35,30 @@ export default function OutputField({ fieldName, fieldValue }: Props) {
       //test it by parsing
       try {
         if (typeof fieldValue === "object") {
-          obj = fieldValue;
+          object = fieldValue;
           isit = true;
         } else {
-          obj = JSON.parse(fieldValue);
+          object = JSON.parse(fieldValue);
 
-          isit = fieldValueStr.startsWith("{") || fieldValueStr.startsWith("[");
+          isit =
+            fieldValueString.startsWith("{") ||
+            fieldValueString.startsWith("[");
         }
       } catch {}
     }
 
     if (isit) {
-      setJsonValue(JSON.stringify(obj, null, 2));
+      setJsonValue(JSON.stringify(object, null, 2));
     }
 
     setIsJSON(isit);
-  }, [fieldValue, fieldValueStr, isNestedContentItem]);
+  }, [fieldValue, fieldValueString, isNestedContentItem]);
 
   const isExpandable = useMemo(() => {
     return (
-      isJSON || isHtml || isImage || (isString && fieldValueStr.length > 150)
+      isJSON || isHtml || isImage || (isString && fieldValueString.length > 150)
     );
-  }, [isJSON, isHtml, isImage, isString, fieldValueStr.length]);
+  }, [isJSON, isHtml, isImage, isString, fieldValueString.length]);
 
   return (
     <div key={fieldName}>
@@ -107,7 +113,7 @@ export default function OutputField({ fieldName, fieldValue }: Props) {
             >
               <div
                 className="prose prose-sm"
-                dangerouslySetInnerHTML={renderHTML(fieldValueStr)}
+                dangerouslySetInnerHTML={renderHTML(fieldValueString)}
               />
             </div>
           </div>

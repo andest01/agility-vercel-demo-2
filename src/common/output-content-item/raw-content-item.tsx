@@ -2,11 +2,13 @@ import { useState } from "react";
 import { FaCaretDown } from "react-icons/fa6";
 import { default as cn } from "classnames";
 
-interface Props {
+interface RawContentItemProperties {
   contentItem: any;
 }
 
-export default function RawContentItem({ contentItem }: Props) {
+export default function RawContentItem({
+  contentItem,
+}: RawContentItemProperties) {
   const [jsonExpanded, setJsonExpanded] = useState(false);
 
   return (

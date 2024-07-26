@@ -6,19 +6,19 @@ import { NextRequest, NextResponse } from "next/server";
  * This endpoint is used as a rewrite for preview requests from middleware.
  * Therefore, the URL will be the original preview request url...
  * @param request
- * @param res
+ * @param response
  * @returns
  */
-export async function GET(request: NextRequest, res: NextResponse) {
-  const searchParams = request.nextUrl.searchParams;
+export async function GET(request: NextRequest, response: NextResponse) {
+  const searchParameters = request.nextUrl.searchParams;
 
-  const agilityPreviewKey = searchParams.get("agilitypreviewkey") || "";
+  const agilityPreviewKey = searchParameters.get("agilitypreviewkey") || "";
 
   //locale is also passed in the querystring on preview requests
-  const locale = searchParams.get("lang");
+  const locale = searchParameters.get("lang");
   const slug = request.nextUrl.pathname;
 
-  const ContentID = searchParams.get("ContentID");
+  const ContentID = searchParameters.get("ContentID");
 
   console.log("Preview Request", {
     agilityPreviewKey,

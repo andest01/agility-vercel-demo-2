@@ -1,10 +1,10 @@
 import { draftMode } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest, res: NextResponse) {
-  const searchParams = request.nextUrl.searchParams;
+export async function GET(request: NextRequest, response: NextResponse) {
+  const searchParameterss = request.nextUrl.searchParams;
 
-  const slug = searchParams.get("slug");
+  const slug = searchParameterss.get("slug");
 
   //disable draft/preview mode
   draftMode().disable();

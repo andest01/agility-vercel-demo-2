@@ -32,16 +32,17 @@ const FeaturedPost = async ({ module, languageCode }: UnloadedModuleProps) => {
     contentLinkDepth: 1,
   });
 
-  let dateStr = "";
-  let contentStr = "";
+  let dateString = "";
+  let contentString = "";
   if (featuredPost) {
     // convert date to str in a way that will work on the server and client with the same value
-    dateStr = DateTime.fromJSDate(new Date(featuredPost.fields.date)).toFormat(
-      "LLL. dd, yyyy",
-    );
+    dateString = DateTime.fromJSDate(
+      new Date(featuredPost.fields.date),
+    ).toFormat("LLL. dd, yyyy");
     //strip out html tags to build an excerpt
-    contentStr = stripHtml(featuredPost?.fields.content || "").result;
-    if (contentStr.length > 200) contentStr = `${contentStr.slice(0, 200)}...`;
+    contentString = stripHtml(featuredPost?.fields.content || "").result;
+    if (contentString.length > 200)
+      contentString = `${contentString.slice(0, 200)}...`;
   }
 
   if (!featuredPost) return null;
@@ -100,13 +101,13 @@ const FeaturedPost = async ({ module, languageCode }: UnloadedModuleProps) => {
             </div>
             <div className="w-8 border-b-2 border-primary-500"></div>
             <div className="mt-4 text-xs font-semibold uppercase italic text-gray-600">
-              {dateStr}
+              {dateString}
             </div>
             <h2 className="font-display mt-1 text-2xl font-black text-secondary-500 transition duration-300 group-hover:text-primary-500">
               {featuredPost.fields.title}
             </h2>
             <p className="mt-3 line-clamp-4 text-sm font-medium leading-loose text-gray-600">
-              {contentStr}
+              {contentString}
             </p>
           </Link>
         </div>

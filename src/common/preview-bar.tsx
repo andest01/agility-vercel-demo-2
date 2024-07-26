@@ -11,7 +11,7 @@ import {
   FaSyncAlt,
 } from "react-icons/fa";
 
-interface Props {
+interface PreviewBarProperties {
   isPreview: boolean | undefined;
   isDevelopmentMode: boolean | undefined;
   startPreviewMode: (pathname: string) => Promise<void>;
@@ -24,7 +24,7 @@ const PreviewBar = ({
   isPreview,
   isDevelopmentMode,
   startPreviewMode,
-}: Props) => {
+}: PreviewBarProperties) => {
   const [open, setOpen] = useState(false);
   const [isPreviewRequested, setisPreviewRequested] = useState(false);
 

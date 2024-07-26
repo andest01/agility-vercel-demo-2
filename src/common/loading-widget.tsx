@@ -1,9 +1,9 @@
 import { CgSpinner } from "react-icons/cg";
-interface Props {
+interface WidgetProperties {
   message: string;
 }
 
-const Widget = ({ message }: Props) => {
+const Widget = ({ message }: WidgetProperties) => {
   return (
     <section className="flex h-screen flex-col items-center justify-center">
       <CgSpinner className="mb-2 animate-spin text-2xl" />
