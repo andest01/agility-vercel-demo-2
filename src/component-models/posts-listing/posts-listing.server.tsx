@@ -4,22 +4,14 @@ import Link from "next/link";
 import { IPostMin, getPostListing } from "lib/cms-content/getPostListing";
 import { useAgilityContext } from "lib/cms/useAgilityContext";
 import PostListingClient from "./posts-listing.client";
-import { getContentItem } from "lib/cms/getContentItem";
-import { UnloadedModuleProps } from "@agility/nextjs";
 import { DateTime } from "luxon";
-
-interface IPostListing {
-  title: string;
-  subtitle: string;
-  preHeader: string;
-}
 
 export interface GetNextPostsProperties {
   skip: number;
   take: number;
 }
 
-const PostListing = async ({ module, languageCode }: UnloadedModuleProps) => {
+const PostListing = async () => {
   const { sitemap, locale } = useAgilityContext();
 
   // get posts for the initial page load
@@ -75,7 +67,7 @@ const PostListing = async ({ module, languageCode }: UnloadedModuleProps) => {
         <h1 className="text-center text-3xl font-bold">No posts available.</h1>
         <div className="my-10">
           <Link
-            href={"/"}
+            href="/"
             className="focus:shadow-outline-primary my-3 rounded-md border border-transparent bg-primary-600 px-4 py-3 text-base font-medium leading-6 text-white transition duration-300 hover:bg-primary-500 focus:border-primary-700 focus:outline-none"
           >
             Return Home

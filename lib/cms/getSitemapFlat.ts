@@ -5,18 +5,20 @@ import { SitemapFlatRequestParams } from "@agility/content-fetch/dist/methods/ge
 
 /**
  * Get the flat sitemap for the given language code, with caching information added.
- * @param params
+ * @param parameters
  * @returns
  */
-export const getSitemapFlat = async (params: SitemapFlatRequestParams) => {
+export const getSitemapFlat = async (parameters: SitemapFlatRequestParams) => {
   const agilitySDK = getAgilitySDK();
 
   agilitySDK.config.fetchConfig = {
     next: {
-      tags: [`agility-sitemap-flat-${params.languageCode || params.locale}`],
+      tags: [
+        `agility-sitemap-flat-${parameters.languageCode || parameters.locale}`,
+      ],
       revalidate: cacheConfig.cacheDuration,
     },
   };
 
-  return await agilitySDK.getSitemapFlat(params);
+  return await agilitySDK.getSitemapFlat(parameters);
 };

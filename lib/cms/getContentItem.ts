@@ -8,17 +8,19 @@ import { ContentItem } from "@agility/content-fetch";
  * @param params
  * @returns
  */
-export const getContentItem = async <T>(params: ContentItemRequestParams) => {
+export const getContentItem = async <T>(
+  parameters: ContentItemRequestParams,
+) => {
   const agilitySDK = getAgilitySDK();
 
   agilitySDK.config.fetchConfig = {
     next: {
       tags: [
-        `agility-content-${params.contentID}-${params.languageCode || params.locale}`,
+        `agility-content-${parameters.contentID}-${parameters.languageCode || parameters.locale}`,
       ],
       revalidate: cacheConfig.cacheDuration,
     },
   };
 
-  return (await agilitySDK.getContentItem(params)) as ContentItem<T>;
+  return (await agilitySDK.getContentItem(parameters)) as ContentItem<T>;
 };

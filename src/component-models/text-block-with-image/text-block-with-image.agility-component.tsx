@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  AgilityPic,
-  ContentItem,
-  ImageField,
-  Module,
-  URLField,
-  UnloadedModule,
-  UnloadedModuleProps,
-} from "@agility/nextjs";
-import Link from "next/link";
-import getAgilitySDK from "lib/cms/getAgilitySDK";
+import { UnloadedModuleProps } from "@agility/nextjs";
 import { getContentItem } from "lib/cms/getContentItem";
 import {
   ITextBlockWithImage,

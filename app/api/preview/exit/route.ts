@@ -1,7 +1,8 @@
 import { draftMode } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest, response: NextResponse) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function GET(request: NextRequest, _response: NextResponse) {
   const searchParameterss = request.nextUrl.searchParams;
 
   const slug = searchParameterss.get("slug");

@@ -1,5 +1,5 @@
 import React from "react";
-import { Module, UnloadedModuleProps } from "@agility/nextjs";
+import { UnloadedModuleProps } from "@agility/nextjs";
 import { getContentItem } from "lib/cms/getContentItem";
 
 interface IHeading {
@@ -7,7 +7,7 @@ interface IHeading {
 }
 
 const Heading = async ({ module, languageCode }: UnloadedModuleProps) => {
-  const { fields, contentID } = await getContentItem<IHeading>({
+  const { fields } = await getContentItem<IHeading>({
     contentID: module.contentid,
     languageCode,
   });

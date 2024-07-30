@@ -1,4 +1,4 @@
-import { renderHTML, Module, UnloadedModuleProps } from "@agility/nextjs";
+import { renderHTML, UnloadedModuleProps } from "@agility/nextjs";
 import { getContentItem } from "lib/cms/getContentItem";
 
 interface RichText {

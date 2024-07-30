@@ -6,9 +6,13 @@ import { default as cn } from "classnames";
 
 interface OutputFieldProperties {
   fieldName: string;
+  // this property came with the starter kit.
+  // It appears to be dynamic, so the use of `any` is warranted
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fieldValue: any;
 }
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export default function OutputField({
   fieldName,
   fieldValue,
@@ -44,7 +48,9 @@ export default function OutputField({
             fieldValueString.startsWith("{") ||
             fieldValueString.startsWith("[");
         }
-      } catch {}
+      } catch {
+        // empty
+      }
     }
 
     if (isit) {

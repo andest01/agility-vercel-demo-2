@@ -7,17 +7,17 @@ import { ContentListRequestParams } from "@agility/content-fetch/dist/methods/ge
  * @param params
  * @returns
  */
-export const getContentList = async (params: ContentListRequestParams) => {
+export const getContentList = async (parameters: ContentListRequestParams) => {
   const agilitySDK = getAgilitySDK();
 
   agilitySDK.config.fetchConfig = {
     next: {
       tags: [
-        `agility-content-${params.referenceName}-${params.languageCode || params.locale}`,
+        `agility-content-${parameters.referenceName}-${parameters.languageCode || parameters.locale}`,
       ],
       revalidate: cacheConfig.cacheDuration,
     },
   };
 
-  return await agilitySDK.getContentList(params);
+  return await agilitySDK.getContentList(parameters);
 };

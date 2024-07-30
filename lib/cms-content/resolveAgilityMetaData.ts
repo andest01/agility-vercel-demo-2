@@ -2,11 +2,10 @@ import { AgilityPageProps, ImageField } from "@agility/nextjs";
 import { ContentItem } from "@agility/content-fetch";
 import { Metadata, ResolvingMetadata } from "next";
 import { getHeaderContent } from "./getHeaderContent";
-import getAgilitySDK from "../cms/getAgilitySDK";
 import ReactHtmlParser from "html-react-parser";
 import { getContentItem } from "lib/cms/getContentItem";
 
-interface Props {
+interface Properties {
   agilityData: AgilityPageProps;
   locale: string;
   sitemap: string;
@@ -19,10 +18,9 @@ export const resolveAgilityMetaData = async ({
   agilityData,
   locale,
   sitemap,
-  isDevelopmentMode,
-  isPreview,
   parent,
-}: Props): Promise<Metadata> => {
+  // eslint-disable-next-line sonarjs/cognitive-complexity
+}: Properties): Promise<Metadata> => {
   const header = await getHeaderContent({ locale, sitemap });
   const ogImages = (await parent).openGraph?.images || [];
 
@@ -62,9 +60,9 @@ export const resolveAgilityMetaData = async ({
   //#endregion
 
   //#region *** resolve the "additional" meta tags ***
-  let metaHTML = agilityData.page?.seo?.metaHTML;
+  const metaHTML = agilityData.page?.seo?.metaHTML;
 
-  let otherMetaData: { [name: string]: string } = {};
+  const otherMetaData: { [name: string]: string } = {};
 
   if (metaHTML) {
     const additionalHeaderMarkup = ReactHtmlParser(metaHTML);
@@ -94,7 +92,7 @@ export const resolveAgilityMetaData = async ({
       console.warn("Could not parse additional meta tags from Agility CMS");
     } else if (Array.isArray(additionalHeaderMarkup)) {
       //array of meta tags
-      additionalHeaderMarkup.forEach((item) => handleMetaTag(item));
+      for (const item of additionalHeaderMarkup) handleMetaTag(item);
     } else {
       //single meta tag
       handleMetaTag(additionalHeaderMarkup);

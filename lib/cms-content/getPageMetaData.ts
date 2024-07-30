@@ -7,10 +7,11 @@ export const getPageMetaData = (agilityPage: AgilityPageProps) => {
   // setup and parse additional header markup
   let additionalHeaderMarkup = null;
   if (metaHTML) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     additionalHeaderMarkup = ReactHtmlParser(metaHTML);
   }
 
-  let metadata: Metadata = {
+  const metadata: Metadata = {
     title: agilityPage.sitemapNode?.title,
     description: agilityPage.page?.seo?.metaDescription,
     keywords: agilityPage.page?.seo?.metaKeywords,

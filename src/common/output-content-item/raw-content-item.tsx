@@ -3,7 +3,7 @@ import { FaCaretDown } from "react-icons/fa6";
 import { default as cn } from "classnames";
 
 interface RawContentItemProperties {
-  contentItem: any;
+  contentItem: unknown;
 }
 
 export default function RawContentItem({

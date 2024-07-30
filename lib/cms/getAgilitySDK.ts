@@ -1,6 +1,5 @@
 import "server-only";
-
-import agility, { ApiClientInstance } from "@agility/content-fetch";
+import agility from "@agility/content-fetch";
 import { draftMode } from "next/headers";
 
 const getAgilitySDK = () => {

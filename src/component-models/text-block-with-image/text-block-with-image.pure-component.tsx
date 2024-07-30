@@ -55,7 +55,6 @@ const generateLink = (url: string, target: string, text: string) => {
 export const TextBlockWithImageComponent = (
   content: Pick<ContentItem<ITextBlockWithImage>, "fields" | "contentID">,
 ) => {
-  console.log(content);
   const { fields, contentID } = content;
   //determine if the image should be high priority
   const priority = fields.highPriority === "true";

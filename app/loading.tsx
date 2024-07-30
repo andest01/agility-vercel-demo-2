@@ -1,7 +1,7 @@
 "use client";
 
 import LoadingWidget from "src/common/loading-widget";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Loading() {
   const [showMessage, setShowMessage] = useState(false);

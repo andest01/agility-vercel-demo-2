@@ -22,44 +22,108 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react", "unicorn", "prettier"],
+  "plugins": ["@typescript-eslint", "react", "unicorn", "etc", "prettier"],
   "rules": {
     "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
-    // off for now
-    "no-empty": "off",
     "eqeqeq": ["error", "smart"],
-
-    "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/ban-types": "off",
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "error",
     "unicorn/no-await-expression-member": "off",
     "unicorn/no-null": "off",
-    "unicorn/no-array-for-each": "off",
     "unicorn/prefer-ternary": "off",
-    "unicorn/prefer-number-properties": "off",
-    "unicorn/consistent-function-scoping": "off",
     "unicorn/filename-case": "off",
-    "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "off",
-    "tailwindcss/migration-from-tailwind-2": "off",
-    "sonarjs/no-gratuitous-expressions": "off",
-    "sonarjs/cognitive-complexity": "off",
     "sonarjs/no-duplicate-string": "off",
-    "sonarjs/prefer-immediate-return": "off",
-    "sonarjs/no-nested-template-literals": "off"
+    "sonarjs/no-nested-template-literals": "off",
+    "tailwindcss/no-custom-classname": "off",
+    "unicorn/no-array-for-each": "warn"
   },
   "overrides": [
     {
       "files": ["src/**/*"],
       "rules": {
+        "no-process-env": "error",
+        "max-params": ["error", 4],
+        "max-depth": ["error", 3],
+        "react/jsx-curly-brace-presence": [
+          "error",
+          {
+            "props": "never",
+            "children": "never",
+            "propElementValues": "always"
+          }
+        ],
+
+        "unicorn/explicit-length-check": "error",
+        "unicorn/prefer-object-from-entries": "error",
+        "unicorn/prefer-set-has": "error",
+        "unicorn/no-useless-spread": "error",
+        "react/jsx-no-useless-fragment": "error",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { "ignoreRestSiblings": true }
+        ],
         "unicorn/filename-case": [
           "error",
           {
             "case": "kebabCase"
           }
         ]
+      }
+    },
+    {
+      "files": ["src/**/*.pure-component.tsx"],
+      "rules": {
+        // pure-components enjoys a much more stringent standard for now.
+        // eventually, i would like to add the following react plugin and rule for state:
+        // 'react/no-set-state': 2,
+        // but not yet.
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["react"],
+                "importNames": [
+                  "useContext",
+                  "useState",
+                  "useReducer",
+                  "useEffect"
+                ],
+                "message": "Usage of useContext, useState, useReducer, etc inside of `pure-components` is not allowed."
+              },
+              {
+                "group": ["lib"],
+                "message": "Usage of Agility libraries is not allowed in pure components"
+              }
+            ]
+          }
+        ],
+        "max-statements": ["error", 14],
+        "etc/no-commented-out-code": "error",
+        "react-hooks/exhaustive-deps": "error",
+        "max-lines": [
+          "error",
+          {
+            "max": 300,
+            "skipBlankLines": true,
+            "skipComments": true
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "src/**/*.stories.tsx",
+        "src/**/*.stories-mocks.*",
+        "src/**/*.spec.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "max-lines": "off",
+        "max-statements": "off",
+        "sonarjs/no-duplicate-string": "off"
       }
     }
   ]

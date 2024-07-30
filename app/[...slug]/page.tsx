@@ -1,5 +1,5 @@
 import { getPageTemplate } from "src/page-models";
-import { PageProps, getAgilityPage } from "lib/cms/getAgilityPage";
+import { PageProperties, getAgilityPage } from "lib/cms/getAgilityPage";
 import { getAgilityContext } from "lib/cms/useAgilityContext";
 
 import { Metadata, ResolvingMetadata } from "next";
@@ -17,7 +17,7 @@ export const dynamic = "force-static";
  * Generate metadata for this page
  */
 export async function generateMetadata(
-  { params, searchParams }: PageProps,
+  { params }: PageProperties,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // read route params
@@ -36,7 +36,7 @@ export async function generateMetadata(
   });
 }
 
-export default async function Page({ params, searchParams }: PageProps) {
+export default async function Page({ params }: PageProperties) {
   //const {isPreview} = getAgilityContext()
   const agilityData = await getAgilityPage({ params });
 

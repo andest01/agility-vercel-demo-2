@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DateTime } from "luxon";
-import getAgilitySDK from "../cms/getAgilitySDK";
 import { ContentList } from "@agility/content-fetch";
 import { ImageField } from "@agility/nextjs";
 import { getContentList } from "lib/cms/getContentList";
@@ -14,7 +14,7 @@ export interface IPostMin {
   image: ImageField;
 }
 
-interface LoadPostsProp {
+interface LoadPostsProperty {
   sitemap: string;
   locale: string;
   skip: number;
@@ -31,16 +31,16 @@ export const getPostListing = async ({
   locale,
   skip,
   take,
-}: LoadPostsProp) => {
+}: LoadPostsProperty) => {
   try {
     // get sitemap...
-    let sitemapNodes = await getSitemapFlat({
+    const sitemapNodes = await getSitemapFlat({
       channelName: sitemap,
       languageCode: locale,
     });
 
     // get posts...
-    let rawPosts: ContentList = await getContentList({
+    const rawPosts: ContentList = await getContentList({
       referenceName: "posts",
       languageCode: locale,
       contentLinkDepth: 2,
@@ -64,10 +64,12 @@ export const getPostListing = async ({
       const url = dynamicUrls[post.contentID] || "#";
 
       // post image src
-      let imageSrc = post.fields.image.url;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const imageSource = post.fields.image.url;
 
       // post image alt
-      let imageAlt = post.fields.image?.label || null;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const imageAlt = post.fields.image?.label || null;
 
       return {
         contentID: post.contentID,
@@ -88,13 +90,13 @@ export const getPostListing = async ({
 };
 
 const resolvePostUrls = function (sitemap: any, posts: any) {
-  let dynamicUrls: any = {};
+  const dynamicUrls: any = {};
   posts.forEach((post: any) => {
-    Object.keys(sitemap).forEach((path) => {
+    for (const path of Object.keys(sitemap)) {
       if (sitemap[path].contentID === post.contentID) {
         dynamicUrls[post.contentID] = path;
       }
-    });
+    }
   });
   return dynamicUrls;
 };

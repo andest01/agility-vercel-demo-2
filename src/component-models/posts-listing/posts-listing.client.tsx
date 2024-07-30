@@ -1,12 +1,11 @@
 "use client";
 
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { IPostMin } from "lib/cms-content/getPostListing";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { AgilityPic } from "@agility/nextjs";
-import { GetNextPostsProps as GetNextPostsProperties } from "./posts-listing.server";
+import { GetNextPostsProperties } from "./posts-listing.server";
 
 interface PostListingClientProperties {
   posts: IPostMin[];
@@ -17,8 +16,6 @@ interface PostListingClientProperties {
 
 const PostListingClient = ({
   posts,
-  locale,
-  sitemap,
   getNextPosts,
 }: PostListingClientProperties) => {
   const [hasMore, setHasMore] = useState(true);

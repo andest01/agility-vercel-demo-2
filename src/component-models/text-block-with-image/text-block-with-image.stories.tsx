@@ -21,7 +21,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  render: (arguments_: any) => {
+  render: () => {
     const properties: Pick<
       ContentItem<ITextBlockWithImage>,
       "fields" | "contentID"

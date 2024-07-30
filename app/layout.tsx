@@ -1,23 +1,33 @@
 import { draftMode } from "next/headers";
-import LoadingWidget from "src/common/loading-widget";
 import PreviewBar from "src/common/preview-bar";
 import SiteFooter from "src/common/site-footer";
 import SiteHeader from "src/common/site-header";
-
 import { useAgilityContext } from "lib/cms/useAgilityContext";
-
 import { Inter } from "next/font/google";
-
 import "/styles/globals.css";
-
 import { getHeaderContent } from "lib/cms-content/getHeaderContent";
 import { redirect } from "next/navigation";
-import { NextRequest } from "next/server";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
+
+async function startPreviewMode(pathname: string) {
+  "use server";
+
+  //turn on draft/preview mode
+  draftMode().enable();
+
+  // Redirect to the same page
+  let url = `${pathname}`;
+  if (url.includes("?")) {
+    url = `${url}&preview=1`;
+  } else {
+    url = `${url}?preview=1`;
+  }
+  redirect(url);
+}
 
 export default async function RootLayout({
   children,
@@ -27,22 +37,6 @@ export default async function RootLayout({
   const { locale, sitemap, isDevelopmentMode, isPreview } = useAgilityContext();
 
   const header = await getHeaderContent({ sitemap, locale });
-
-  async function startPreviewMode(pathname: string) {
-    "use server";
-
-    //turn on draft/preview mode
-    draftMode().enable();
-
-    // Redirect to the same page
-    let url = `${pathname}`;
-    if (url.includes("?")) {
-      url = `${url}&preview=1`;
-    } else {
-      url = `${url}?preview=1`;
-    }
-    redirect(url);
-  }
 
   return (
     <html lang="en" className={inter.className}>
@@ -56,7 +50,7 @@ export default async function RootLayout({
             <div className="flex min-h-screen flex-col">
               <SiteHeader {...{ header }} />
 
-              <main className={`flex-grow`}>{children}</main>
+              <main className={`grow`}>{children}</main>
               <SiteFooter />
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 interface IRevalidateRequest {
@@ -13,7 +13,8 @@ interface IRevalidateRequest {
   changeDateUTC: string;
 }
 
-export async function POST(request: NextRequest, response: NextResponse) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function POST(request: NextRequest, _response: NextResponse) {
   //parse the body
   const data = (await request.json()) as IRevalidateRequest;
 

@@ -2,7 +2,7 @@ import "server-only";
 import { getAgilityPageProps } from "@agility/nextjs/node";
 import { getAgilityContext } from "./useAgilityContext";
 
-export interface PageProps {
+export interface PageProperties {
   params: { slug: string[] };
   searchParams?: { [key: string]: string | string[] | undefined };
 }
@@ -12,12 +12,12 @@ export interface PageProps {
  * @param param0
  * @returns
  */
-export const getAgilityPage = async ({ params }: PageProps) => {
+export const getAgilityPage = async ({ params }: PageProperties) => {
   const { isPreview: preview, locale } = getAgilityContext();
 
   if (!params.slug) params.slug = [""];
 
-  const page = await getAgilityPageProps({
+  return await getAgilityPageProps({
     params,
     preview,
     locale,
@@ -25,6 +25,4 @@ export const getAgilityPage = async ({ params }: PageProps) => {
       contentLinkDepth: 0,
     },
   });
-
-  return page;
 };

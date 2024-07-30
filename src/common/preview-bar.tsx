@@ -8,7 +8,6 @@ import {
   FaChevronDown,
   FaChevronUp,
   FaSpinner,
-  FaSyncAlt,
 } from "react-icons/fa";
 
 interface PreviewBarProperties {
@@ -33,6 +32,7 @@ const PreviewBar = ({
     if (isDevelopmentMode) {
       alert("You are currently in Development Mode, Live Mode is unavailable.");
     } else {
+      // eslint-disable-next-line sonarjs/no-gratuitous-expressions
       if (!isDevelopmentMode && !isPreview) {
         setisPreviewRequested(true);
 
